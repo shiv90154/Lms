@@ -16,7 +16,6 @@ import {
     Loader2,
     AlertTriangle
 } from 'lucide-react';
-import { formatDistanceToNow } from 'date-fns';
 
 // Simple time ago function
 const timeAgo = (date) => {
