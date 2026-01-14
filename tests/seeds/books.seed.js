@@ -1,0 +1,170 @@
+/**
+ * Book Seed Data
+ * Provides sample book data for testing
+ */
+
+export const bookSeeds = [
+    {
+        title: 'Complete Guide to UPSC Preparation',
+        author: 'Dr. Rajesh Kumar',
+        description: 'Comprehensive guide for UPSC Civil Services Examination preparation',
+        price: 899,
+        discountPrice: 699,
+        category: 'Competitive Exams',
+        subcategory: 'UPSC',
+        images: ['https://example.com/books/upsc1.jpg'],
+        stock: 50,
+        isbn: '978-1234567890',
+        tags: ['UPSC', 'Civil Services', 'IAS', 'Exam Prep'],
+        isNewArrival: true,
+        isActive: true,
+        publisher: 'Education Publishers',
+        publicationDate: new Date('2024-01-01'),
+        pages: 500,
+        language: 'English',
+        weight: 800,
+        dimensions: { length: 24, width: 18, height: 3 },
+        rating: 4.5,
+        reviewCount: 120,
+        soldCount: 500
+    },
+    {
+        title: 'Mathematics for Class 12',
+        author: 'Prof. Sharma',
+        description: 'Complete mathematics textbook for Class 12 CBSE students',
+        price: 599,
+        discountPrice: 499,
+        category: 'Academic',
+        subcategory: 'Class 12',
+        images: ['https://example.com/books/math12.jpg'],
+        stock: 100,
+        isbn: '978-1234567891',
+        tags: ['Mathematics', 'Class 12', 'CBSE', 'Textbook'],
+        isNewArrival: false,
+        isActive: true,
+        publisher: 'Academic Press',
+        publicationDate: new Date('2023-06-01'),
+        pages: 400,
+        language: 'English',
+        weight: 600,
+        dimensions: { length: 22, width: 16, height: 2.5 },
+        rating: 4.7,
+        reviewCount: 250,
+        soldCount: 1200
+    },
+    {
+        title: 'English Grammar and Composition',
+        author: 'Dr. Verma',
+        description: 'Essential English grammar guide for competitive exams',
+        price: 399,
+        category: 'Language',
+        subcategory: 'English',
+        images: ['https://example.com/books/english.jpg'],
+        stock: 75,
+        isbn: '978-1234567892',
+        tags: ['English', 'Grammar', 'Competitive Exams'],
+        isNewArrival: true,
+        isActive: true,
+        publisher: 'Language Publishers',
+        publicationDate: new Date('2024-02-15'),
+        pages: 300,
+        language: 'English',
+        weight: 400,
+        dimensions: { length: 20, width: 14, height: 2 },
+        rating: 4.3,
+        reviewCount: 80,
+        soldCount: 300
+    },
+    {
+        title: 'General Knowledge 2024',
+        author: 'Editorial Board',
+        description: 'Latest general knowledge and current affairs for 2024',
+        price: 299,
+        discountPrice: 249,
+        category: 'General Knowledge',
+        subcategory: 'Current Affairs',
+        images: ['https://example.com/books/gk2024.jpg'],
+        stock: 200,
+        isbn: '978-1234567893',
+        tags: ['GK', 'Current Affairs', '2024', 'Competitive Exams'],
+        isNewArrival: true,
+        isActive: true,
+        publisher: 'Knowledge Publishers',
+        publicationDate: new Date('2024-01-01'),
+        pages: 250,
+        language: 'English',
+        weight: 350,
+        dimensions: { length: 20, width: 14, height: 1.5 },
+        rating: 4.6,
+        reviewCount: 150,
+        soldCount: 800
+    },
+    {
+        title: 'Out of Stock Book',
+        author: 'Test Author',
+        description: 'This book is out of stock',
+        price: 499,
+        category: 'Test',
+        images: ['https://example.com/books/test.jpg'],
+        stock: 0,
+        isbn: '978-1234567894',
+        tags: ['Test'],
+        isNewArrival: false,
+        isActive: true,
+        publisher: 'Test Publishers',
+        pages: 200,
+        language: 'English',
+        rating: 0,
+        reviewCount: 0,
+        soldCount: 0
+    },
+    {
+        title: 'Inactive Book',
+        author: 'Test Author',
+        description: 'This book is inactive',
+        price: 399,
+        category: 'Test',
+        images: ['https://example.com/books/inactive.jpg'],
+        stock: 50,
+        isbn: '978-1234567895',
+        tags: ['Test'],
+        isNewArrival: false,
+        isActive: false,
+        publisher: 'Test Publishers',
+        pages: 150,
+        language: 'English',
+        rating: 0,
+        reviewCount: 0,
+        soldCount: 0
+    }
+]
+
+/**
+ * Generate random book data
+ */
+export function generateRandomBook(overrides = {}) {
+    const randomNum = Math.floor(Math.random() * 10000)
+    const categories = ['Competitive Exams', 'Academic', 'Language', 'General Knowledge']
+    const authors = ['Dr. Kumar', 'Prof. Sharma', 'Dr. Verma', 'Editorial Board']
+
+    return {
+        title: `Book ${randomNum}`,
+        author: authors[Math.floor(Math.random() * authors.length)],
+        description: `Description for book ${randomNum}`,
+        price: Math.floor(Math.random() * 1000) + 200,
+        category: categories[Math.floor(Math.random() * categories.length)],
+        images: [`https://example.com/books/book${randomNum}.jpg`],
+        stock: Math.floor(Math.random() * 100) + 10,
+        isbn: `978-${randomNum}`,
+        tags: [`Tag${randomNum}`, 'Test'],
+        isNewArrival: Math.random() > 0.5,
+        isActive: true,
+        publisher: 'Test Publishers',
+        pages: Math.floor(Math.random() * 500) + 100,
+        language: 'English',
+        rating: Math.random() * 5,
+        reviewCount: Math.floor(Math.random() * 100),
+        soldCount: Math.floor(Math.random() * 500),
+        ...overrides
+    }
+}

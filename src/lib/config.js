@@ -75,4 +75,5 @@ export function validateConfig() {
     }
 }
 
+
 export default config;

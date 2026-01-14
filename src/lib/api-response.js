@@ -88,3 +88,6 @@ export function handleApiError(error) {
 
     return sendResponse(null, 500, serverErrorResponse());
 }
+
+// Alias for backward compatibility
+export const apiResponse = ApiResponse;

@@ -43,3 +43,6 @@ async function connectDB() {
 }
 
 export default connectDB;
+
+// Named export for backward compatibility
+export { connectDB };

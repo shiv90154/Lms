@@ -70,3 +70,58 @@ export function extractTokenFromHeader(authHeader) {
     }
     return authHeader.substring(7);
 }
+
+/**
+ * Generate secure random token for password reset
+ */
+export function generatePasswordResetToken() {
+    const crypto = require('crypto');
+    return crypto.randomBytes(32).toString('hex');
+}
+
+/**
+ * Generate email verification token
+ */
+export function generateEmailVerificationToken() {
+    const crypto = require('crypto');
+    return crypto.randomBytes(32).toString('hex');
+}
+
+/**
+ * Parse device info from user agent
+ */
+export function parseDeviceInfo(userAgent, ip) {
+    // Simple device info parsing - in production, consider using a library like 'ua-parser-js'
+    const deviceInfo = {
+        userAgent: userAgent || 'Unknown',
+        ip: ip || 'Unknown',
+        browser: 'Unknown',
+        os: 'Unknown',
+        device: 'Unknown'
+    };
+
+    if (userAgent) {
+        // Basic browser detection
+        if (userAgent.includes('Chrome')) deviceInfo.browser = 'Chrome';
+        else if (userAgent.includes('Firefox')) deviceInfo.browser = 'Firefox';
+        else if (userAgent.includes('Safari')) deviceInfo.browser = 'Safari';
+        else if (userAgent.includes('Edge')) deviceInfo.browser = 'Edge';
+
+        // Basic OS detection
+        if (userAgent.includes('Windows')) deviceInfo.os = 'Windows';
+        else if (userAgent.includes('Mac')) deviceInfo.os = 'macOS';
+        else if (userAgent.includes('Linux')) deviceInfo.os = 'Linux';
+        else if (userAgent.includes('Android')) deviceInfo.os = 'Android';
+        else if (userAgent.includes('iOS')) deviceInfo.os = 'iOS';
+
+        // Basic device detection
+        if (userAgent.includes('Mobile')) deviceInfo.device = 'Mobile';
+        else if (userAgent.includes('Tablet')) deviceInfo.device = 'Tablet';
+        else deviceInfo.device = 'Desktop';
+    }
+
+    return deviceInfo;
+}
+
+// Export alias for backward compatibility
+export const verifyToken = verifyAccessToken;
